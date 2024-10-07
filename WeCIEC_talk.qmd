@@ -1,7 +1,7 @@
 ---
 title: "Representing Semantic Relationships in Ancient IE Languages" 
 subtitle: "A Pilot Study"
-author: "Anton Vinogradov, Gabriel Wallace, & Andrew Byrd"
+author: "Anton Vinogradov, Gabriel Wallace, and Andrew Byrd"
 institute: "University of Kentucky" 
 date: "Friday, October 25, 2024"
 format: 
