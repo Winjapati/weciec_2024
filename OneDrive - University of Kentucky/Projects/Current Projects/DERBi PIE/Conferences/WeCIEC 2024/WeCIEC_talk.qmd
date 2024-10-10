@@ -1,16 +1,15 @@
 ---
 title: "Representing Semantic Relationships in Ancient IE Languages" 
 subtitle: "A Pilot Study"
-author: "Anton Vinogradov, Gabriel Wallace, & Andrew Byrd"
+{{< qrcode https://jmbuhr.de qr1 width=300 height=300 colorDark='#0011bb' >}}
+author: "Anton Vinogradov, Gabriel Wallace, and Andrew Byrd"
 institute: "University of Kentucky" 
 date: "Friday, October 25, 2024"
 format: 
   revealjs:
     incremental: true
-  tableofcontents:
-  extensions:
-    - qrcode
-    - tableofcontents
+    extensions:
+      - qrcode
 editor: visual
 ---
 
