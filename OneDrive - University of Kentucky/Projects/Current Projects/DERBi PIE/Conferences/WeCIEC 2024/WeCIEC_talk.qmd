@@ -1,13 +1,12 @@
 ---
 title: "Representing Semantic Relationships in Ancient IE Languages" 
 subtitle: "A Pilot Study"
-{{< qrcode https://jmbuhr.de qr1 width=300 height=300 colorDark='#0011bb' >}}
 author: "Anton Vinogradov, Gabriel Wallace, and Andrew Byrd"
 institute: "University of Kentucky" 
 date: "Friday, October 25, 2024"
 format: 
   revealjs:
-    incremental: true
+    incremental: false
     extensions:
       - qrcode
 editor: visual
@@ -49,14 +48,11 @@ editor: visual
 
 ::: fragment
 -   Etymological database, with multiple references.
-    -   Currently:
-        -   all of LIV parsed (thanks Thomas Olander!)
-        -   Currently parsing (Tim Dempsey):
-            -   NIL (this December)
-            -   half of Pokorny (next July), inshallah
-    -   Working towards: everything (?!?)
--   How to differentiate: weight etymologies according to prominence and citation
--   Have applied for NEH funding, hopefully this will put us closer to the goal of releasing to public.
+    -   all of LIV parsed (thanks Thomas Olander!)
+    -   half of Pokorny parsed (will finish next July, provided funding)
+    -   will finish parsing NIL this December
+    -   ultimately: everything (?!?)
+-   Have applied for NEH funding, hopefully this will put us closer to the goal of releasing to public a year from now.
 :::
 
 ## DERBi PIE: Query Searches <!--# Insert DERBi PIE wheel header -->
@@ -71,22 +67,26 @@ editor: visual
 
 ## DERBi PIE: Query Searches <!--# Insert DERBi PIE wheel header -->
 
-This is the problem: how on earth to do this? <!--# Center (vert & horiz), increase size/improve style, etc. -->
+::: {style="display: flex; justify-content: center;"}
+This is the problem: how on earth to do this?
+:::
 
 # Tactic #1: WordNet
 
 ## WordNet: What is it?
 
+::: {style="display: flex; justify-content: center;"}
+[![](wordnet_princeton)](https://wordnet.princeton.edu/)
+:::
+
 -   A large, organized lexical database of English words
 -   Groups words into "synsets" (sets of synonyms) based on meanings
 
-::: {style="display: flex; justify-content: center;"}
-<iframe src="http://wordnet.princeton.edu/" width="600" height="400" frameborder="0" allowfullscreen>
-
-</iframe>
-:::
-
 ## WordNet: What is it?
+
+::: {style="display: flex; justify-content: center;"}
+[![](wordnet_princeton)](https://wordnet.princeton.edu/)
+:::
 
 -   Provides relationships between words, such as:
     -   **Synonyms** (similar meanings, e.g. "dog", "pooch")
@@ -94,28 +94,19 @@ This is the problem: how on earth to do this? <!--# Center (vert & horiz), incre
     -   **Hypernyms** (general terms, e.g., "animal" for "dog")
     -   **Hyponyms** (specific terms, e.g., "dog" for "animal")
 
-::: {style="display: flex; justify-content: center;"}
-<iframe src="https://wordnet.princeton.edu/" width="600" height="400" frameborder="0" allowfullscreen>
-
-</iframe>
-:::
-
-## WordNet
+## WordNet: Linked WordNets for Ancient Indo-European languages (Zanchi & Ginevra)
 
 ::: {style="display: flex; justify-content: center;"}
-<iframe src="http://sites.google.com/unipv.it/linked-wordnets/home-page?authuser=0" width="800" height="600" frameborder="0" allowfullscreen>
-
-</iframe>
-:::
-
-::: {style="display: flex; justify-content: center;"}
-Chiara Zanchi, Riccardo Ginevra: *Linked WordNets for Ancient Indo-European languages*
+[![](WordNets){width="90%"}](https://sites.google.com/unipv.it/linked-wordnets/wordnets?authuser=0)
 :::
 
 ## WordNet: Building One for PIE?
 
 -   Working with a team of UK CS undergraduates, we mapped a list of PIE roots and words (primarily from Pokorny) onto the English WordNet structure
 -   1500 roots successfully mapped
+
+## WordNet: Building One for PIE?
+
 -   Numerous difficulties with entries that do not map neatly:
     -   *\*aghlu- (IEW*, p. 8) 'dark cloud; rainy weather': new hyponym (of both 'cloud' and 'weather') needed
     -   *\*ab- (IEW*, p. 1) 'water, river': new hypernym needed? or two mappings?
@@ -132,15 +123,22 @@ Chiara Zanchi, Riccardo Ginevra: *Linked WordNets for Ancient Indo-European lang
 
 ## Word Embeddings
 
--   Basics
+-   **Distributional Analysis:** Linguistic items with similar distributions have similar meanings
+-   **Vectors:** These are generated based on a given word's distribution in a corpus
+-   **Use:** The more similar any two given word's vectors are to each other, the closer those words are in meaning
 
 ## Word Embeddings
 
--   Basics
+-   **Example:**
+    -   Take a text, like *Beowulf*
+    -   Pre-process it (tokenization, lemmatization, etc.)
+    -   Generate vectors (word2vec, fastText, etc.)
+    -   Compare word vectors through cosine similarities (semantic relatedness)
+    -   Results!
 
 ## Word Embeddings
 
--   Basics
+![Plots like these can be created with generated vectors!](beowulf.png){fig-align="center"}
 
 ## Word Embeddings: Methods
 
@@ -158,14 +156,56 @@ Chiara Zanchi, Riccardo Ginevra: *Linked WordNets for Ancient Indo-European lang
 
 -   X
 
-## Word Embeddings: Problems (EMNLP comments)
+## Word Embeddings: Problems (anonymous reviews from experts in NLP)
 
--   
+1.  Use of Google translate suboptimal, may result in translation errors; should use either bilingual dictionaries or LLMs (think GPT) for more accurate translations
+2.  LLMs \> Word Embeddings
+    1.  Vectors: polysemy (e.g., 'bank')
+    2.  Vectors: context
+    3.  Vectors: precision (100 vs. 175B parameters)
 
-# Tactic #3: Putting the Constructed in Reconstructed Language
+# Tactic #3: Putting the Constructed in Reconstructed Language: the Slice Technique
 
 ## Slice Technique
 
-## Slice Technique
+-   This semester, I'm working with a group of CS undergrads and a CS professor on a different strategy to arrive at the same goal
 
-# Future Directions
+-   Working to produce hyperspaces with modern methods (LLMs)
+
+-   LLMs use enormous corpora to produce extraordinarily detailed hyperspaces
+
+-   This is a problem for ancient languages, of course!
+
+## Slice Technique: the Main Idea
+
+-   The idea: generate
+
+## Slice Technique: the Controversial Part
+
+# Recap & Future Directions
+
+# Recap: WordNet
+
+1.  Upsides: semi-universal structure
+2.  Downsides: must be done manually; requires scholars to make choices that are sometimes unknowable; isn't capable of showing certain types of semantic similarities/differences beyond synonymy, hyponymy, etc.
+
+# Recap: Word Embeddings
+
+1.  Upsides: fully automated, requires low CPU processing
+2.  Downsides: doesn't distinguish multiple senses (polysemy), is less accurate than LLMs
+3.  Unanswered question -- can Anton's reconstruction methodologies be extended to LLM hyperspaces?
+
+# Recap: Slice Technique
+
+1.  Upsides: utilizes LLMs, identifies how limited a corpus we need to generate hyperspace
+2.  Downsides: requires that we create a PIE corpus -- but how big?!?
+
+# Future Directions: another possibility
+
+-   Johannson and Pietro Nina 2015: algorithm that converts WordNets into hyperspaces
+
+    -   We can do this for many IE languages (mostly modern)
+
+    -   "Translate" PIE lexicon (\< DERBi PIE) into a WordNet structure
+
+    -   Manually assign outliers as hyponyms, hypernyms, synonyms, etc. of existing lexemes
