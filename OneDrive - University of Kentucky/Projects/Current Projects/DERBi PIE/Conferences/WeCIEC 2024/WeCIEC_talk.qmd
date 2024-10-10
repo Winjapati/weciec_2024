@@ -1,0 +1,172 @@
+---
+title: "Representing Semantic Relationships in Ancient IE Languages" 
+subtitle: "A Pilot Study"
+author: "Anton Vinogradov, Gabriel Wallace, & Andrew Byrd"
+institute: "University of Kentucky" 
+date: "Friday, October 25, 2024"
+format: 
+  revealjs:
+    incremental: true
+  tableofcontents:
+  extensions:
+    - qrcode
+    - tableofcontents
+editor: visual
+---
+
+## To Download Slides & Draft of Word Embeddings Paper
+
+::: {style="display: flex; justify-content: center;"}
+{{< qrcode https://jmbuhr.de qr1 width=300 height=300 colorDark='#0011bb' >}}
+:::
+
+## Overview of Talk
+
+-   What led us to do this?
+-   Tactic #1: WordNet
+-   Tactic #2: Reconstructing Word Embeddings using Descendant Languages
+-   Tactic #3: Putting the Constructed in Reconstructed Languages
+-   Future Directions
+
+## Anton sends his regrets
+
+[![](Anton.png){fig-align="center"}](https://linktr.ee/garyyo)
+
+::: {style="display: flex; justify-content: center;"}
+<i>*Dr. Anton Vinogradov, recent graduate of UK, PhD, Computer Science*</i>
+:::
+
+# What led us to do this?
+
+## DERBi PIE
+
+![](Horsey.jpg){fig-align="center"}
+
+::: {style="display: flex; justify-content: center;"}
+<i>*Database of Etymological Roots Beginning in PIE*</i>
+:::
+
+## DERBi PIE
+
+::: fragment
+-   Etymological database, with multiple references.
+    -   Currently:
+        -   all of LIV parsed (thanks Thomas Olander!)
+        -   Currently parsing (Tim Dempsey):
+            -   NIL (this December)
+            -   half of Pokorny (next July), inshallah
+    -   Working towards: everything (?!?)
+-   How to differentiate: weight etymologies according to prominence and citation
+-   Have applied for NEH funding, hopefully this will put us closer to the goal of releasing to public.
+:::
+
+## DERBi PIE: Query Searches <!--# Insert DERBi PIE wheel header -->
+
+::: fragment
+-   Search Functions Created
+    -   Integrated Texts - identify roots, stems, and words in texts
+    -   Phonological Search - identify roots, stems, and words by phonological shape (regex)
+    -   Morphological Search - identify roots, stems, and words by morphological property (POS, class, gender, etc.)
+-   Quickly realized that to identify semantic categories and relationships -- especially ones that make sense across languages -- is ***not*** an easy task
+:::
+
+## DERBi PIE: Query Searches <!--# Insert DERBi PIE wheel header -->
+
+This is the problem: how on earth to do this? <!--# Center (vert & horiz), increase size/improve style, etc. -->
+
+# Tactic #1: WordNet
+
+## WordNet: What is it?
+
+-   A large, organized lexical database of English words
+-   Groups words into "synsets" (sets of synonyms) based on meanings
+
+::: {style="display: flex; justify-content: center;"}
+<iframe src="http://wordnet.princeton.edu/" width="600" height="400" frameborder="0" allowfullscreen>
+
+</iframe>
+:::
+
+## WordNet: What is it?
+
+-   Provides relationships between words, such as:
+    -   **Synonyms** (similar meanings, e.g. "dog", "pooch")
+    -   **Antonyms** (opposite meanings, e.g. "bad", "good")
+    -   **Hypernyms** (general terms, e.g., "animal" for "dog")
+    -   **Hyponyms** (specific terms, e.g., "dog" for "animal")
+
+::: {style="display: flex; justify-content: center;"}
+<iframe src="https://wordnet.princeton.edu/" width="600" height="400" frameborder="0" allowfullscreen>
+
+</iframe>
+:::
+
+## WordNet
+
+::: {style="display: flex; justify-content: center;"}
+<iframe src="http://sites.google.com/unipv.it/linked-wordnets/home-page?authuser=0" width="800" height="600" frameborder="0" allowfullscreen>
+
+</iframe>
+:::
+
+::: {style="display: flex; justify-content: center;"}
+Chiara Zanchi, Riccardo Ginevra: *Linked WordNets for Ancient Indo-European languages*
+:::
+
+## WordNet: Building One for PIE?
+
+-   Working with a team of UK CS undergraduates, we mapped a list of PIE roots and words (primarily from Pokorny) onto the English WordNet structure
+-   1500 roots successfully mapped
+-   Numerous difficulties with entries that do not map neatly:
+    -   *\*aghlu- (IEW*, p. 8) 'dark cloud; rainy weather': new hyponym (of both 'cloud' and 'weather') needed
+    -   *\*ab- (IEW*, p. 1) 'water, river': new hypernym needed? or two mappings?
+-   The general idea of English \|\> PIE is flawed, because PIE ≠ English!
+
+## WordNet: Broader Problems
+
+-   **Limited Scope of Meanings**: Doesn’t capture all nuances of word usage
+-   **Lack of Context**: Doesn’t account for how context alters word meaning
+-   **Not All Languages Have Wordet**: WordNets in some languages are better developed than in others
+-   **MUST BE DONE MANUALLY**
+
+# Tactic #2: Reconstructing Word Embeddings using Descendant Languages
+
+## Word Embeddings
+
+-   Basics
+
+## Word Embeddings
+
+-   Basics
+
+## Word Embeddings
+
+-   Basics
+
+## Word Embeddings: Methods
+
+-   X
+
+## Word Embeddings: Methods
+
+-   X
+
+## Word Embeddings: Results
+
+-   X
+
+## Word Embeddings: Results
+
+-   X
+
+## Word Embeddings: Problems (EMNLP comments)
+
+-   
+
+# Tactic #3: Putting the Constructed in Reconstructed Language
+
+## Slice Technique
+
+## Slice Technique
+
+# Future Directions
