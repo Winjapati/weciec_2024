@@ -12,10 +12,12 @@ format:
 editor: visual
 ---
 
-## To Download Slides & Draft of Word Embeddings Paper
+## Download: Slides, Paper, Data
+
+<br>
 
 ::: {style="display: flex; justify-content: center;"}
-{{< qrcode https://jmbuhr.de qr1 width=300 height=300 colorDark='#0011bb' >}}
+{{< qrcode https://github.com/Winjapati/weciec_2024/tree/main/WeCIEC_talk_files qr1 width=400 height=400 colorDark='#0011bb' >}}
 :::
 
 ## Overview of Talk
@@ -31,7 +33,7 @@ editor: visual
 [![](Anton.png){fig-align="center"}](https://linktr.ee/garyyo)
 
 ::: {style="display: flex; justify-content: center;"}
-<i>*Dr. Anton Vinogradov, recent graduate of UK, PhD, Computer Science*</i>
+<i>*Dr. Anton Vinogradov,(recent!) PhD, Computer Science*</i>
 :::
 
 # What led us to do this?
@@ -63,20 +65,43 @@ editor: visual
     -   Phonological Search - identify roots, stems, and words by phonological shape (regex)
     -   Morphological Search - identify roots, stems, and words by morphological property (POS, class, gender, etc.)
 -   Quickly realized that to identify semantic categories and relationships -- especially ones that make sense across languages -- is ***not*** an easy task
+    -   there is no unified classification of semantics
 :::
 
-## DERBi PIE: Query Searches <!--# Insert DERBi PIE wheel header -->
+## DERBi PIE: What could this do for us? <!--# Insert DERBi PIE wheel header -->
 
-::: {style="display: flex; justify-content: center;"}
-This is the problem: how on earth to do this?
-:::
+-   In DERBi PIE, having an integrated semantic system such as this would allow us to provide automated answers to questions such as:
+
+    -   Are certain sound sequences associated with certain meanings or semantic spheres?
+
+    -   Are certain morphological derivations associated with certain meanings or semantics spheres?
+
+    -   How have meanings changed over time into the various branches and daughter languages?
+
+## DERBi PIE: the Problem <!--# Insert DERBi PIE wheel header -->
+
+<br> <br> <br>
+
+<p style="text-align: center;">
+
+This is the problem: how on earth can we do this?
+
+</p>
+
+<br>
+
+<p style="text-align: center;">
+
+And *can* we do this?
+
+</p>
 
 # Tactic #1: WordNet
 
 ## WordNet: What is it?
 
 ::: {style="display: flex; justify-content: center;"}
-[![](wordnet_princeton)](https://wordnet.princeton.edu/)
+[![](wordnet_princeton.png)](https://wordnet.princeton.edu/)
 :::
 
 -   A large, organized lexical database of English words
@@ -102,21 +127,25 @@ This is the problem: how on earth to do this?
 
 ## WordNet: Building One for PIE?
 
+::: {style="display: flex; justify-content: center;"}
+![](PIE_wordnet.png)
+:::
+
 -   Working with a team of UK CS undergraduates, we mapped a list of PIE roots and words (primarily from Pokorny) onto the English WordNet structure
--   1500 roots successfully mapped
+-   1500 roots successfully mapped, though many are false matches ('golf'?)
 
 ## WordNet: Building One for PIE?
 
--   Numerous difficulties with entries that do not map neatly:
+-   Numerous substantive difficulties with entries that do not map neatly:
     -   *\*aghlu- (IEW*, p. 8) 'dark cloud; rainy weather': new hyponym (of both 'cloud' and 'weather') needed
     -   *\*ab- (IEW*, p. 1) 'water, river': new hypernym needed? or two mappings?
--   The general idea of English \|\> PIE is flawed, because PIE ≠ English!
+-   The general idea of English (or any other language) \|\> PIE is flawed, because PIE ≠ English!
 
 ## WordNet: Broader Problems
 
 -   **Limited Scope of Meanings**: Doesn’t capture all nuances of word usage
 -   **Lack of Context**: Doesn’t account for how context alters word meaning
--   **Not All Languages Have Wordet**: WordNets in some languages are better developed than in others
+-   **Not All Languages Have WordNet**: WordNets in some languages are better developed than in others
 -   **MUST BE DONE MANUALLY**
 
 # Tactic #2: Reconstructing Word Embeddings using Descendant Languages
@@ -178,9 +207,25 @@ This is the problem: how on earth to do this?
 
 ## Slice Technique: the Main Idea
 
--   The idea: generate
+![](pmkn_pie.jpg){fig-align="center"}
+
+## Slice Technique: the Main Idea
+
+-   Using LLMs, generate a complete hyperspace of English on full corpus
+
+-   Identify how small of a corpus you need to reproduce similar hyperspace
+
+-   Repeat process for other languages
+
+-   Identify, broadly speaking, the size and type of corpus you need for accurate hyperspace
 
 ## Slice Technique: the Controversial Part
+
+![](there_be_dragons.png){fig-align="center"}
+
+## Slice Technique: Status
+
+We've just started working on this, so no results yet.
 
 # Recap & Future Directions
 
@@ -188,6 +233,8 @@ This is the problem: how on earth to do this?
 
 1.  Upsides: semi-universal structure
 2.  Downsides: must be done manually; requires scholars to make choices that are sometimes unknowable; isn't capable of showing certain types of semantic similarities/differences beyond synonymy, hyponymy, etc.
+
+![](PIE_wordnet.png){fig-align="center"}
 
 # Recap: Word Embeddings
 
@@ -200,12 +247,16 @@ This is the problem: how on earth to do this?
 1.  Upsides: utilizes LLMs, identifies how limited a corpus we need to generate hyperspace
 2.  Downsides: requires that we create a PIE corpus -- but how big?!?
 
+![](pmkn_pie.jpg){fig-align="center"}
+
 # Future Directions: another possibility
 
--   Johannson and Pietro Nina 2015: algorithm that converts WordNets into hyperspaces
+-   [Johannson and Pietro Nina 2015](https://aclanthology.org/N15-1164.pdf "Embedding a Semantic Network in a Word Space"): build hyperspaces from systems like WordNet
 
-    -   We can do this for many IE languages (mostly modern)
+    -   We should be able to do this for many IE languages (mostly modern)
 
-    -   "Translate" PIE lexicon (\< DERBi PIE) into a WordNet structure
+    -   For languages without WordNets (like PIE), we "translate" the lexicon (\< DERBi PIE) into a WordNet structure
+
+    -   Eliminate any matchings that are untrue (like drive "hit a golfball")
 
     -   Manually assign outliers as hyponyms, hypernyms, synonyms, etc. of existing lexemes
