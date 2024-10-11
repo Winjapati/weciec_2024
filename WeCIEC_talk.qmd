@@ -25,7 +25,6 @@ editor: visual
 -   What led us to do this?
 -   Tactic #1: WordNet
 -   Tactic #2: Reconstructing Word Embeddings using Descendant Languages
--   Tactic #3: Putting the Constructed in Reconstructed Languages
 -   Future Directions
 
 ## Anton sends his regrets
@@ -185,47 +184,133 @@ And *can* we do this?
 
 -   X
 
-## Word Embeddings: Problems (anonymous reviews from experts in NLP)
+## Word Embeddings: Reconstructing a Hyperspace in Languages without a Corpus
+
+-   An analysis of relatedness of lexemes in a language can be done in ancient languages
+-   But how does one do this for languages without any known corpus, such as PIE?
+-   Well, how do we identify other properties of PIE?
+
+## Word Embeddings : Basic Idea
+
+<br>
+
+::: {style="display: flex; justify-content: center;"}
+![](comp_meth_sound.png){fig-align="center"}
+:::
+
+-   We take two, similar properties in two related languages, which allow us to infer the approximation of an earlier state in a source language
+
+## Word Embeddings : Basic Idea
+
+::: {style="display: flex; justify-content: center;"}
+![](comp_meth_hyperspace.png){fig-align="center"}
+:::
+
+-   It is in this way that we propose that the use of word embedding models created by descendant languages, to infer the approximation of an earlier state in the source language
+
+## Word Embeddings: Methods
+
+::: {style="display: flex; justify-content: center;"}
+{{< qrcode https://github.com/Winjapati/weciec_2024/tree/main/WeCIEC_talk_files qr1 width=400 height=400 colorDark='#0011bb' >}}
+:::
+
+-   As you can imagine, this stuff is complicated, which is why we won't go into much detail about the specific methods;
+    -   see Github for four-page paper, code, data, etc.
+-   If there are any questions that we can't answer, we'll forward to our main collaborator, Anton, who will be happy to do so
+
+## Word Embeddings, Problem #1: Vectors Across Models
+
+-   Vectors generated for hyperspaces take on arbitrary values when training models
+-   You must *align* models (Dev et al., 2021):
+    -   identify substructures across language models that remain fixed
+    -   we use pre-aligned word embedding models (following Joulin et al., 2018)
+
+## Word Embeddings, Problem #2: Verification
+
+-   So we take pre-aligned hyperspaces, and reconstruct an earlier, source hyperspace based on the hyperspaces provided
+-   But how can we trust this methodology?
+    -   Obviously can't verify the hyperspace of PIE through analysis of PIE texts!
+
+## Word Embeddings, Problem #2: Verification
+
+![](comp_meth_romance.png){fig-align="center"}
+
+## Word Embeddings: Methods
+
+-   We use existing aligned models of Spanish & French (Joulin et al., 2018) as a source of vector and word information
+    -   aligned word vectors taken from Facebook AI Research's fastText (Bojanowski et al., 2017)
+-   Words filtered out:
+    -   if there is no corresponding word in the other languages
+    -   non-vocabulary, including words with non-language characters
+
+## Word Embeddings: Methods
+
+-   Models trained on French & Spanish Wikipedia articles, include both vocabulary and non-words/words containing non-language characters, the latter of which were removed (7.3%, 6.6%, respectively)
+
+-   Remaining words lemmatized, furthering reducing vocabulary by roughly 10%
+
+## Word Embeddings: Methods
+
+-   To relate words together and find common words:
+    -   words are translated into each other's respective languages, using Google Translate, with a python translation library deep-translator
+    -   the same is done with Latin, using the Latin corpus (from CLTK \[the Tesserae Project\]), which is lemmatized
+-   Any word that cannot be lemmatized in Latin (such as Greek words) is removed from the corpus
+
+## Word Embeddings: Calculating \*Latin
+
+![](centroid.png){fig-align="center"}
+
+::: {style="font-size: 0.85em;"}
+1.  Identify the centroid of each vector: **language-word center**
+2.  Identify the centroid of both **lwc**s -\> **inter-language-word center**
+3.  Identify the closest vectors of to the **ilwc** using cosine-distance
+4.  Take the average of these two vectors to arrive at the approximate \*Latin-word vector
+:::
+
+## Word Embeddings: Results
+
+-   To identify the effectiveness of the method, we 
+
+![](comp_meth_romance.png){fig-align="center"}
+
+
+## Word Embeddings: NLP Problems
 
 1.  Use of Google translate suboptimal, may result in translation errors; should use either bilingual dictionaries or LLMs (think GPT) for more accurate translations
 2.  LLMs \> Word Embeddings
-    1.  Vectors: polysemy (e.g., 'bank')
-    2.  Vectors: context
-    3.  Vectors: precision (100 vs. 175B parameters)
+    a.  Vectors: polysemy (e.g., 'bank')
+    b.  Vectors: context
+    c.  Vectors: precision (300 vs. 175B parameters)
 
-# Tactic #3: Putting the Constructed in Reconstructed Language: the Slice Technique
+<!-- # Tactic #3: Putting the Constructed in Reconstructed Language: the Slice Technique -->
 
-## Slice Technique
+<!-- ## Slice Technique -->
 
--   This semester, I'm working with a group of CS undergrads and a CS professor on a different strategy to arrive at the same goal
+<!-- -   This semester, I'm working with a group of CS undergrads and a CS professor on a different strategy to arrive at the same goal -->
 
--   Working to produce hyperspaces with modern methods (LLMs)
+<!-- -   Working to produce hyperspaces with modern methods (LLMs) -->
 
--   LLMs use enormous corpora to produce extraordinarily detailed hyperspaces
+<!-- -   LLMs use enormous corpora to produce extraordinarily detailed hyperspaces -->
 
--   This is a problem for ancient languages, of course!
+<!-- -   This is a problem for ancient languages, of course! -->
 
-## Slice Technique: the Main Idea
+<!-- ## Slice Technique: the Main Idea -->
 
-![](pmkn_pie.jpg){fig-align="center"}
+<!-- ![](pmkn_pie.jpg){fig-align="center"} -->
 
-## Slice Technique: the Main Idea
+<!-- ## Slice Technique: the Main Idea -->
 
--   Using LLMs, generate a complete hyperspace of English on full corpus
+<!-- -   Using LLMs, generate a complete hyperspace of English on full corpus -->
 
--   Identify how small of a corpus you need to reproduce similar hyperspace
+<!-- -   Identify how small of a corpus you need to reproduce similar hyperspace -->
 
--   Repeat process for other languages
+<!-- -   Repeat process for other languages -->
 
--   Identify, broadly speaking, the size and type of corpus you need for accurate hyperspace
+<!-- -   Identify, broadly speaking, the size and type of corpus you need for accurate hyperspace -->
 
-## Slice Technique: the Controversial Part
+<!-- ## Slice Technique: the Controversial Part -->
 
-![](there_be_dragons.png){fig-align="center"}
-
-## Slice Technique: Status
-
-We've just started working on this, so no results yet.
+<!-- ![](there_be_dragons.png){fig-align="center"} -->
 
 # Recap & Future Directions
 
@@ -242,12 +327,13 @@ We've just started working on this, so no results yet.
 2.  Downsides: doesn't distinguish multiple senses (polysemy), is less accurate than LLMs
 3.  Unanswered question -- can Anton's reconstruction methodologies be extended to LLM hyperspaces?
 
-# Recap: Slice Technique
+<!-- # Recap: Slice Technique -->
 
-1.  Upsides: utilizes LLMs, identifies how limited a corpus we need to generate hyperspace
-2.  Downsides: requires that we create a PIE corpus -- but how big?!?
+<!-- 1.  Upsides: utilizes LLMs, identifies how limited a corpus we need to generate hyperspace -->
 
-![](pmkn_pie.jpg){fig-align="center"}
+<!-- 2.  Downsides: requires that we create a PIE corpus -- but how big?!? -->
+
+<!-- ![](pmkn_pie.jpg){fig-align="center"} -->
 
 # Future Directions: another possibility
 
