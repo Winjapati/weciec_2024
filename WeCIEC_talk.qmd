@@ -183,29 +183,49 @@ format:
 
 ![Plots like these can be created with generated vectors!](beowulf.png){fig-align="center"}
 
+## Word Embeddings: Hyperspace...?
+
+-   If you were to plot out every vector generated from one of these models, you would have a *hyperspace* or a *semantic space*, with the dimensions of each word vector essentially acting as coordinates.
+
+-   The closer two words lie to each other in this space, the closer in semantic value they are.
+
+-   It's possible to adjust how many dimensions you generate for each vector, but in general the more the better.
+
+    -   More fancy math allows us to 'simplify' these vectors into 2 or 3 for easy viewing, as seen before.
+
 ## Word Embeddings: Processing the Text for Tokens
 
--   X
+![](Gallia%20est%20omnis%20divisa%20in%20partes%20tres%20(1).png){fig-align="center"}
 
 ## Word Embeddings: Processing the Text for Lemmas
 
--   X
+![](lemmas.png){fig-align="center"}
 
 ## Word Embeddings: Identifying the Context
 
--   X
+![](context.png){fig-align="center"}
 
 ## Word Embeddings: Constructing the Hyperspace
 
--   X
+-   Using a word embeddings model such as word2vec or fastText, run the tokenized and lemmatized text through it to generate word vectors.
+-   These vectors will be based on the words' positions within the text.
+
+## Word Embeddings: Constructing the Hyperspace
+
+-   Another Latin example:
+
+![](vir_vectors.png){fig-align="center" width="438"}
 
 ## Word Embeddings: Calculate Word Similarities
 
--   X
+-   To get a numerical representation of the similarity between two vectors, we use their *cosine similarity* (cosine of the angle between the vectors).
+-   Similarity scores range from -1 to 1, with -1 indicating opposite vectors and 1 indicating proportional vectors.
+
+![Fancy formula from Wikipedia](formula.png){fig-align="center"}
 
 ## Word Embeddings: Example of Cosine Similarity
 
--   X
+![](cosine.png){fig-align="center"}
 
 ## Word Embeddings: Reconstructing a Hyperspace in Languages without a Corpus
 
