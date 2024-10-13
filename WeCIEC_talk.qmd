@@ -4,28 +4,30 @@ subtitle: "A Pilot Study"
 author: "Anton Vinogradov, Gabriel Wallace, and Andrew Byrd"
 institute: "University of Kentucky" 
 date: "Friday, October 25, 2024"
-format: 
+format:
   revealjs:
     incremental: false
     extensions:
       - qrcode
-editor: visual
+# format:
+#   pdf:
+#     toc: true
+#     toc-depth: 2
+#     number-sections: true
+#     colorlinks: true
+# editor: visual
 ---
-
-## Download: Slides, Paper, Code
-
-<br>
-
-::: {style="display: flex; justify-content: center;"}
-{{< qrcode https://github.com/Winjapati/weciec_2024/tree/main/WeCIEC_talk_files qr1 width=400 height=400 colorDark='#0011bb' >}}
-:::
 
 ## Overview of Talk
 
--   What led us to do this?
--   Tactic #1: WordNet
--   Tactic #2: Reconstructing Word Embeddings using Descendant Languages
--   Future Directions
+-   [What led us to do this?]
+-   [Tactic #1: WordNet]
+-   [Tactic #2: Reconstructing Word Embeddings using Descendant Languages]
+-   [Recap & Future Directions](#recap-future-directions)
+
+::: {style="display: flex; justify-content: center;"}
+{{< qrcode https://github.com/Winjapati/weciec_2024/tree/main/WeCIEC_talk_files qr1 width=350 height=350 colorDark='#0011bb' >}}
+:::
 
 ## Anton sends his regrets
 
@@ -48,7 +50,7 @@ editor: visual
 ## DERBi PIE
 
 ::: fragment
--   Etymological database, with multiple references.
+-   Etymological database, with multiple, linked references
     -   all of LIV parsed (thanks Thomas Olander!)
     -   half of Pokorny fully parsed (will finish next July, provided funding)
     -   will finish parsing NIL this December
@@ -66,6 +68,8 @@ editor: visual
 :::
 
 ## DERBi PIE: Query Searches <!--# Insert DERBi PIE wheel header -->
+
+<br>
 
 ::: fragment
 -   Quickly realized that to identify semantic categories and relationships -- especially ones that make sense across languages -- is ***not*** an easy task
@@ -105,6 +109,8 @@ editor: visual
 
 ## WordNet: What is it?
 
+<br>
+
 ::: {style="display: flex; justify-content: center;"}
 [![](wordnet_princeton.png)](https://wordnet.princeton.edu/)
 :::
@@ -123,6 +129,12 @@ editor: visual
     -   **Antonyms** (opposite meanings, e.g. "bad", "good")
     -   **Hypernyms** (general terms, e.g., "animal" for "dog")
     -   **Hyponyms** (specific terms, e.g., "dog" for "animal")
+
+## WordNet: What is it? (Kazakov & Dobnik 2003)
+
+<br>
+
+[![](WordNet_example.png){fig-alt="Kazakov & Dobnik 2003" fig-align="center" width="740"}](https://www.researchgate.net/publication/228707772_Inductive_learning_of_lexical_semantics_with_typed_unification_grammars)
 
 ## WordNet: Linked WordNets for Ancient Indo-European languages (Zanchi & Ginevra)
 
@@ -144,20 +156,20 @@ editor: visual
 -   Numerous substantive difficulties with entries that do not map neatly:
     -   [*\*aghlu-*](https://indo-european.info/pokorny-etymological-dictionary/whnjs.htm) *(IEW*, p. 8) 'dark cloud; rainy weather': new hyponym (of both 'cloud' and 'weather') needed
     -   [*\*ab-*](https://indo-european.info/pokorny-etymological-dictionary/whnjs.htm) *(IEW*, p. 1) 'water, river': new hypernym needed? or two mappings?
--   The general idea of English (or any other language) **↦** PIE is flawed, because PIE ≠ English (etc.)!
+-   The general idea of English (or any other language) **↦** PIE is difficult to implement, because PIE ≠ English (etc.)!
 
 ## WordNet: Broader Problems
 
 -   **Limited Scope of Meanings**: Doesn’t capture all nuances of word usage
 -   **Lack of Context**: Doesn’t account for how context alters word meaning
--   **Not All Languages Have WordNet**: WordNets in some languages are better developed than in others
+-   **Not All Languages Have WordNet**: especially true for ancient/fragmentary languages
 -   **MUST BE DONE MANUALLY**
 
 # Tactic #2: Reconstructing Word Embeddings using Descendant Languages
 
 ## Word Embeddings: Overview
 
--   Second approach is one more in line with what is done in mainstream NLP – identifying semantic relationships through word embeddings.
+-   Second approach is one more in line with what is done in present-day NLP – identifying semantic relationships through word embeddings.
 
 -   To do so, we must:
 
@@ -209,7 +221,7 @@ editor: visual
 ![](comp_meth_sound.png){fig-align="center"}
 :::
 
--   We take two, similar properties in two related languages, which allow us to infer the approximation of an earlier state in a source language
+-   We take two, similar properties in two related languages, which allow us to approximate an earlier state in a source language
 
 ## Word Embeddings : Basic Idea
 
@@ -217,7 +229,7 @@ editor: visual
 ![](comp_meth_hyperspace.png){fig-align="center"}
 :::
 
--   It is in this way that we propose that the use of word embedding models created by descendant languages, to infer the approximation of an earlier state in the source language
+-   It is in this way that we propose that the use of word embedding models created by descendant languages, to approximate an earlier state in the source language
 
 ## Word Embeddings: Methods
 
@@ -227,7 +239,7 @@ editor: visual
 
 -   As you can imagine, this stuff is complicated, which is why we won't go into much detail about the specific methods;
     -   see Github for four-page paper, code, data, etc.
--   If there are any questions that we can't answer, we'll forward to our main collaborator, Anton, who will be happy to do so
+-   If there are any questions that we can't answer, we'll forward them to our main collaborator, Anton, who will be happy to do so
 
 ## Word Embeddings, Problem #1: Vectors Across Models
 
@@ -238,6 +250,8 @@ editor: visual
     -   Use pre-aligned word embedding models (following [Joulin et al., 2018](https://arxiv.org/pdf/1804.07745 "Loss in Translation: Learning Bilingual Word Mapping with a Retrieval Criterion"))
 
 ## Word Embeddings, Problem #2: Verification
+
+<br>
 
 -   So we take pre-aligned hyperspaces, and reconstruct an earlier, source hyperspace based on the hyperspaces provided
 -   But how can we trust this methodology?
@@ -267,6 +281,8 @@ editor: visual
 
 ## Word Embeddings: Methods
 
+<br>
+
 -   To relate words together and find common words:
     -   Words are translated into each other's respective languages, using Google Translate, with a Python translation library deep-translator
     -   The same is done with Latin, using the Latin corpus (from [CLTK](https://cltk.org/ "The Classical Language Toolkit (Python library)") \[the Tesserae Project\]), which is lemmatized
@@ -277,10 +293,10 @@ editor: visual
 ![](centroid.png){fig-align="center"}
 
 ::: {style="font-size: 0.85em;"}
-1.  If there isn't a 1:1 correspondence, identify the centroid of lemma's vector: **language-word center**
+1.  If there isn't a 1:1 correspondence between the Romance language & Latin, identify the centroid of lemma's vector: **language-word center**
 2.  Identify the centroid of both **lwc**s -\> **inter-language-word center**
-3.  Identify the closest vectors of to the **ilwc** using cosine-distance
-4.  Take the average of these two vectors to arrive at the approximate \*Latin-word vector
+3.  Identify the closest vectors to the **ilwc** using cosine-distance
+4.  Take the average of these two vectors to arrive at the approximate \*Latin word vector
 :::
 
 ## Word Embeddings: Results
@@ -301,12 +317,16 @@ editor: visual
 
 -   Our results indicate mixed success: we can create a hyperspace from the descendant languages that performs reasonably well on Latin tests with OddOneOut
 -   Preliminary tests show that the smaller the corpus, the better the model works, as compared to the normal one
--   This is not exactly a bad thing, as this is the case for most languages in our discipline!
+-   This is not exactly a bad thing, as this is the case for many languages in our discipline!
+    -   If a language has a large corpus (such as Ancient Greek), we can reduce it as we've done here for Latin
 
 ## Word Embeddings: Results
 
+<br>
+
 -   Unclear what is the "magic number" for the size of corpus to arrive at most accurate representation (compared to the normal model)
 -   Unclear exactly why performance of descendant models tends to decrease as the corpus size increases
+    -   Anton has ideas, all quite technical -- see the draft for further
 
 ## Word Embeddings: Problems with Current Model
 
@@ -316,9 +336,9 @@ editor: visual
     b.  Vectors: context
     c.  Vectors: precision (300 vs. 175B parameters)
 
-# Recap & Future Directions
+# Recap & Future Directions {#recap-future-directions}
 
-# Recap: WordNet
+## Recap: WordNet
 
 1.  Upsides: semi-universal structure
 2.  Downsides:
@@ -327,12 +347,14 @@ editor: visual
 
 ![](PIE_wordnet.png){fig-align="center"}
 
-# Recap: Word Embeddings
+## Recap: Word Embeddings
+
+<br>
 
 1.  Upsides: fully automated, requires low CPU processing
 2.  Downsides: doesn't distinguish multiple senses (polysemy), is less accurate than LLMs
 
-# Future Directions: another possibility
+## Future Directions: WordNet Embedding?
 
 -   [Johannson and Pietro Nina 2015](https://aclanthology.org/N15-1164.pdf "Embedding a Semantic Network in a Word Space"): build hyperspaces from systems like WordNet
 
@@ -340,25 +362,29 @@ editor: visual
 
     -   For languages without WordNets (like PIE), we "translate" the lexicon (\< DERBi PIE) into a WordNet structure
 
-    -   Eliminate any matchings that are untrue (like drive "hit a golfball")
+-   Eliminate any matchings that are untrue (like *\*i̯eh₂-* "drive" = "hit a golfball")
 
     -   Manually assign outliers as hyponyms, hypernyms, synonyms, etc. of existing lexemes
 
--   Same problems identified previously remain
+-   But same problems from before remain
 
-# Future Directions: using LLM models
+## Future Directions: using LLM models
 
--   Probably the best course of action is to stick with the current strategy, but:
+-   Probably the best course of action is to stick with the Descendant Model strategy, but:
 
-    -   Utilize LLMs (such as GPT) for modelling (hyperspace) for greater precision and differentiation of polysemous forms
+    -   Utilize LLMs (such as GPT) for modelling (hyperspace) for greater precision and differentiation of polysemy
 
     -   Instead of Google Translate, use bilingual dictionary or LLM
 
-    -   Add additional Romance languages; when happy, move on to other subbranches (likely Slavic or Indic)
+        -   We've had great success with LLMs in the parsing of data for DERBi PIE
+
+    -   Add additional Romance languages;
+
+        -   when happy with results, move on to other subbranches (likely Slavic or Indic)
 
     -   Iterate, iterate, iterate!
 
-# Thank you!
+## Thank you!
 
 ![](uky_ling.jpeg){fig-align="center" width="691"}
 
