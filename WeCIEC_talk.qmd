@@ -6,28 +6,24 @@ institute: "University of Kentucky"
 date: "Friday, October 25, 2024"
 format:
   revealjs:
-    incremental: false
+    self-contained: true
+    incremental: true
     extensions:
       - qrcode
-# format:
-#   pdf:
-#     toc: true
-#     toc-depth: 2
-#     number-sections: true
-#     colorlinks: true
-# editor: visual
+    header-includes:
+      - '<img src="Horsey.jpg" style="position: absolute; top: 10px; right: 10px; width: 100px; height: auto;">'
 ---
 
 ## Overview of Talk
 
--   [What led us to do this?]
--   [Tactic #1: WordNet]
--   [Tactic #2: Reconstructing Word Embeddings using Descendant Languages]
--   [Recap & Future Directions](#recap-future-directions)
-
 ::: {style="display: flex; justify-content: center;"}
-{{< qrcode https://github.com/Winjapati/weciec_2024/tree/main/WeCIEC_talk_files qr1 width=350 height=350 colorDark='#0011bb' >}}
+{{< qrcode https://github.com/Winjapati/weciec_2024/tree/main/WeCIEC_talk_files qr1 width=300 height=300 colorDark='#0011bb' >}}
 :::
+
+-   What led us to do this?
+-   Tactic #1: WordNet
+-   Tactic #2: Reconstructing Word Embeddings using Descendant Languages
+-   Recap & Future Directions
 
 ## Anton sends his regrets
 
@@ -58,16 +54,16 @@ format:
 -   Have applied for NEH funding, hopefully this will put us closer to the goal of releasing to public a year from now.
 :::
 
-## DERBi PIE: Query Searches <!--# Insert DERBi PIE wheel header -->
+## DERBi PIE: Query Searches
 
 ::: fragment
--   Search Functions Created
+-   Search Functions Created (or we know how to)
     -   Integrated Texts - identify roots, stems, and words in texts
     -   Phonological Search - identify roots, stems, and words by phonological shape (regex)
     -   Morphological Search - identify roots, stems, and words by morphological property (POS, class, gender, etc.)
 :::
 
-## DERBi PIE: Query Searches <!--# Insert DERBi PIE wheel header -->
+## DERBi PIE: Query Searches
 
 <br>
 
@@ -76,31 +72,29 @@ format:
     -   Given cross-linguistic variation, there is no unified classification of "words"
 :::
 
-## DERBi PIE: What could this do for us? <!--# Insert DERBi PIE wheel header -->
+## DERBi PIE: What could this do for us?
 
--   In DERBi PIE, having an integrated semantic system such as this would allow us to provide automated answers to questions such as:
+-   In DERBi PIE, having an integrated semantic system could provide automated answers to questions such as:
 
     -   Are certain sound sequences associated with certain meanings or semantic spheres?
 
-    -   Are certain morphological derivations associated with certain meanings or semantics spheres?
+    -   Are certain morphological derivations associated with certain meanings or semantic spheres?
 
     -   How have meanings changed over time into the various branches and daughter languages?
 
-## DERBi PIE: the Problem <!--# Insert DERBi PIE wheel header -->
+## DERBi PIE: the Problem
 
 <br> <br> <br>
 
 <p style="text-align: center;">
 
--   This is the problem: how on earth can we do this?
+-   #1: How to create a system of semantic properties and relationships that translates across IE languages?
 
 </p>
 
-<br>
-
 <p style="text-align: center;">
 
--   And *can* we do this?
+-   #2: Is it even possible to do this?
     -   (We still don't know.)
 
 </p>
@@ -138,9 +132,7 @@ format:
 
 ## WordNet: Linked WordNets for Ancient Indo-European languages (Zanchi & Ginevra)
 
-::: {style="display: flex; justify-content: center;"}
-[![](WordNets){width="90%"}](https://sites.google.com/unipv.it/linked-wordnets/wordnets?authuser=0)
-:::
+[![](WordNets.png){fig-align="center" width="700"}](https://sites.google.com/unipv.it/linked-wordnets/wordnets?authuser=0)
 
 ## WordNet: Building One for PIE?
 
@@ -154,7 +146,7 @@ format:
 ## WordNet: Building One for PIE?
 
 -   Numerous substantive difficulties with entries that do not map neatly:
-    -   [*\*aghlu-*](https://indo-european.info/pokorny-etymological-dictionary/whnjs.htm) *(IEW*, p. 8) 'dark cloud; rainy weather': new hyponym (of both 'cloud' and 'weather') needed
+    -   [*\*aghlu-*](https://indo-european.info/pokorny-etymological-dictionary/whnjs.htm) *(IEW*, p. 8) 'dark cloud; rainy weather': new hypernym (of both 'cloud' and 'weather') needed
     -   [*\*ab-*](https://indo-european.info/pokorny-etymological-dictionary/whnjs.htm) *(IEW*, p. 1) 'water, river': new hypernym needed? or two mappings?
 -   The general idea of English (or any other language) **↦** PIE is difficult to implement, because PIE ≠ English (etc.)!
 
@@ -241,7 +233,7 @@ format:
 ![](comp_meth_sound.png){fig-align="center"}
 :::
 
--   We take two, similar properties in two related languages, which allow us to approximate an earlier state in a source language
+-   We take two, similar properties in two (or more) related languages, which allow us to approximate an earlier state in a source language
 
 ## Word Embeddings : Basic Idea
 
@@ -254,12 +246,12 @@ format:
 ## Word Embeddings: Methods
 
 ::: {style="display: flex; justify-content: center;"}
-{{< qrcode https://github.com/Winjapati/weciec_2024/tree/main/WeCIEC_talk_files qr1 width=400 height=400 colorDark='#0011bb' >}}
+{{< qrcode https://github.com/Winjapati/weciec_2024/tree/main/WeCIEC_talk_files qr1 width=300 height=300 colorDark='#0011bb' >}}
 :::
 
 -   As you can imagine, this stuff is complicated, which is why we won't go into much detail about the specific methods;
     -   see Github for four-page paper, code, data, etc.
--   If there are any questions that we can't answer, we'll forward them to our main collaborator, Anton, who will be happy to do so
+-   If there are any questions that we can't answer, we'll forward them to Anton, who will be happy to do so
 
 ## Word Embeddings, Problem #1: Vectors Across Models
 
@@ -310,12 +302,36 @@ format:
 
 ## Word Embeddings: Calculating \*Latin
 
-![](centroid.png){fig-align="center"}
+::: {style="font-size: 0.75em;"}
+1a. If there's a 1:1 correspondence between the Romance language & Latin: **language-word center**
 
-::: {style="font-size: 0.85em;"}
-1.  If there isn't a 1:1 correspondence between the Romance language & Latin, identify the centroid of lemma's vector: **language-word center**
+-   French *être* : Latin *esse*
+:::
+
+
+![](centroid.png){fig-align="center" width="175"}
+
+::: {style="font-size: 0.75em;"}
+1b. If there isn't a 1:1 correspondence, identify the centroid of lemma's vector: **language-word center**
+
+-   French *frêle*, *fragile* : Latin *fragilis*
+
+:::
+
 2.  Identify the centroid of both **lwc**s -\> **inter-language-word center**
-3.  Identify the closest vectors to the **ilwc** using cosine-distance
+
+
+## Word Embeddings: Calculating \*Latin
+
+::: {style="font-size: 0.9em;"}
+-   With a better model/better translations, this is all we'd need. 
+-   Two extra steps were added by Anton to take into account translation errors and unexpected outliers.
+
+3.  We identify the closest vectors to the **ilwc** using cosine-distance.
+
+
+![](formula.png){fig-align="center"}
+
 4.  Take the average of these two vectors to arrive at the approximate \*Latin word vector
 :::
 
@@ -382,11 +398,13 @@ format:
 
     -   For languages without WordNets (like PIE), we "translate" the lexicon (\< DERBi PIE) into a WordNet structure
 
+## Future Directions: WordNet Embedding?
+
 -   Eliminate any matchings that are untrue (like *\*i̯eh₂-* "drive" = "hit a golfball")
 
     -   Manually assign outliers as hyponyms, hypernyms, synonyms, etc. of existing lexemes
 
--   But same problems from before remain
+-   But same problems from before remain - less precise, must be done manually
 
 ## Future Directions: using LLM models
 
@@ -398,11 +416,13 @@ format:
 
         -   We've had great success with LLMs in the parsing of data for DERBi PIE
 
-    -   Add additional Romance languages;
+## Future Directions: using LLM models
 
-        -   when happy with results, move on to other subbranches (likely Slavic or Indic)
+-   Add additional Romance languages;
 
-    -   Iterate, iterate, iterate!
+-   When happy with results, move on to other subbranches (likely Slavic or Indic) for testing;
+
+-   We believe that a good, workable model should be able to generate a *Proto-vector through the centroid of the language-word centers (minus those additional steps).
 
 ## Thank you!
 
