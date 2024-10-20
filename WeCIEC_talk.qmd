@@ -7,7 +7,7 @@ date: "Friday, October 25, 2024"
 format:
   revealjs:
     self-contained: true
-    incremental: true
+    incremental: false
     extensions:
       - qrcode
     header-includes:
@@ -21,9 +21,9 @@ format:
 :::
 
 -   What led us to do this?
--   Tactic #1: WordNet
--   Tactic #2: Reconstructing Word Embeddings using Descendant Languages
--   Recap & Future Directions
+-   Overview of Word Embeddings
+-   Reconstructing Word Embeddings using Descendant Languages
+-   Future Directions & DERBi PIE
 
 ## Anton sends his regrets
 
@@ -78,7 +78,9 @@ format:
 
     -   Are certain sound sequences associated with certain meanings or semantic spheres?
 
-    -   Are certain morphological derivations associated with certain meanings or semantic spheres?
+        -   Sound symbolism, etc.
+
+    -   Morphological classes or derivations?
 
     -   How have meanings changed over time into the various branches and daughter languages?
 
@@ -88,76 +90,9 @@ format:
 
 <p style="text-align: center;">
 
--   #1: How to create a system of semantic properties and relationships that translates across IE languages?
+-   How to create a system of semantic properties and relationships that translates across IE languages?
 
-</p>
-
-<p style="text-align: center;">
-
--   #2: Is it even possible to do this?
-    -   (We still don't know.)
-
-</p>
-
-# Tactic #1: WordNet
-
-## WordNet: What is it?
-
-<br>
-
-::: {style="display: flex; justify-content: center;"}
-[![](wordnet_princeton.png)](https://wordnet.princeton.edu/)
-:::
-
--   A large, organized lexical database of English words
--   Groups words into "synsets" (sets of synonyms) based on meanings
-
-## WordNet: What is it?
-
-::: {style="display: flex; justify-content: center;"}
-[![](wordnet_princeton)](https://wordnet.princeton.edu/)
-:::
-
--   Provides relationships between words, such as:
-    -   **Synonyms** (similar meanings, e.g. "dog", "pooch")
-    -   **Antonyms** (opposite meanings, e.g. "bad", "good")
-    -   **Hypernyms** (general terms, e.g., "animal" for "dog")
-    -   **Hyponyms** (specific terms, e.g., "dog" for "animal")
-
-## WordNet: What is it? (Kazakov & Dobnik 2003)
-
-<br>
-
-[![](WordNet_example.png){fig-alt="Kazakov & Dobnik 2003" fig-align="center" width="740"}](https://www.researchgate.net/publication/228707772_Inductive_learning_of_lexical_semantics_with_typed_unification_grammars)
-
-## WordNet: Linked WordNets for Ancient Indo-European languages (Zanchi & Ginevra)
-
-[![](WordNets.png){fig-align="center" width="700"}](https://sites.google.com/unipv.it/linked-wordnets/wordnets?authuser=0)
-
-## WordNet: Building One for PIE?
-
-::: {style="display: flex; justify-content: center;"}
-![](PIE_wordnet.png)
-:::
-
--   Working with a team of UK CS undergraduates, we mapped a list of PIE roots and words (primarily from Pokorny) onto the English WordNet structure
--   1500 roots successfully mapped, though many are false matches ('golf'?)
-
-## WordNet: Building One for PIE?
-
--   Numerous substantive difficulties with entries that do not map neatly:
-    -   [*\*aghlu-*](https://indo-european.info/pokorny-etymological-dictionary/whnjs.htm) *(IEW*, p. 8) 'dark cloud; rainy weather': new hypernym (of both 'cloud' and 'weather') needed
-    -   [*\*ab-*](https://indo-european.info/pokorny-etymological-dictionary/whnjs.htm) *(IEW*, p. 1) 'water, river': new hypernym needed? or two mappings?
--   The general idea of English (or any other language) **↦** PIE is difficult to implement, because PIE ≠ English (etc.)!
-
-## WordNet: Broader Problems
-
--   **Limited Scope of Meanings**: Doesn’t capture all nuances of word usage
--   **Lack of Context**: Doesn’t account for how context alters word meaning
--   **Not All Languages Have WordNet**: especially true for ancient/fragmentary languages
--   **MUST BE DONE MANUALLY**
-
-# Tactic #2: Reconstructing Word Embeddings using Descendant Languages
+# Overview of Word Embeddings
 
 ## Word Embeddings: Overview
 
@@ -243,6 +178,8 @@ format:
 
 -   It is in this way that we propose that the use of word embedding models created by descendant languages, to approximate an earlier state in the source language
 
+# Reconstructing Word Embeddings using Descendant Languages
+
 ## Word Embeddings: Methods
 
 ::: {style="display: flex; justify-content: center;"}
@@ -253,15 +190,7 @@ format:
     -   see Github for four-page paper, code, data, etc.
 -   If there are any questions that we can't answer, we'll forward them to Anton, who will be happy to do so
 
-## Word Embeddings, Problem #1: Vectors Across Models
-
--   Vectors generated for hyperspaces take on arbitrary values when training models
-    -   So 'dog' could = (0, 0) or (-6, 100) – these values change every time you run the model
--   For this reason, we must *align* models ([Dev et al., 2021](https://arxiv.org/pdf/1806.01330 "Closed Form Word Embedding Alignment")):
-    -   Identify substructures across language models that remain fixed
-    -   Use pre-aligned word embedding models (following [Joulin et al., 2018](https://arxiv.org/pdf/1804.07745 "Loss in Translation: Learning Bilingual Word Mapping with a Retrieval Criterion"))
-
-## Word Embeddings, Problem #2: Verification
+## Word Embeddings, Problem #1: Verification
 
 <br>
 
@@ -269,14 +198,22 @@ format:
 -   But how can we trust this methodology?
     -   Obviously can't verify the hyperspace of PIE through analysis of PIE texts!
 
-## Word Embeddings, Problem #2: Verification
+## Word Embeddings, Problem #1: Verification
 
 ![](comp_meth_romance.png){fig-align="center"}
 
+## Word Embeddings, Problem #2: Vectors Across Models
+
+-   Vectors generated for hyperspaces take on arbitrary values when training models
+    -   So 'dog' could = (0, 0) or (-6, 100) – these values change every time you run the model
+-   For this reason, we must *align* models ([Dev et al., 2021](https://arxiv.org/pdf/1806.01330 "Closed Form Word Embedding Alignment")):
+    -   Identify substructures across language models that remain fixed
+    -   Use pre-aligned word embedding models (following [Joulin et al., 2018](https://arxiv.org/pdf/1804.07745 "Loss in Translation: Learning Bilingual Word Mapping with a Retrieval Criterion"))
+
 ## Word Embeddings: Methods
 
--   We use existing aligned models of Spanish & French ([Joulin et al., 2018](https://arxiv.org/pdf/1804.07745 "Loss in Translation: Learning Bilingual Word Mapping with a Retrieval Criterion")) as a source of vector and word information
-    -   Aligned word vectors taken from Facebook AI Research's fastText ([Bojanowski et al., 2017](https://arxiv.org/pdf/1607.04606 "Enriching Word Vectors with Subword Information"))
+-   Using existing aligned models of Spanish & French ([Joulin et al., 2018](https://arxiv.org/pdf/1804.07745 "Loss in Translation: Learning Bilingual Word Mapping with a Retrieval Criterion")) as a source of vector and word information:
+    -   We take aligned word vectors from Facebook AI Research's fastText ([Bojanowski et al., 2017](https://arxiv.org/pdf/1607.04606 "Enriching Word Vectors with Subword Information"))
 -   Words filtered out:
     -   If there is no corresponding word in the other languages
     -   Non-vocabulary, including words with non-language characters
@@ -287,9 +224,11 @@ format:
 
 ![](la_wikipedia.png){fig-align="center"}
 
--   Models trained on French & Spanish Wikipedia articles, include both vocabulary and non-words/words containing non-language characters, the latter of which were removed (7.3%, 6.6%, respectively)
+-   Models trained on French & Spanish Wikipedia articles
 
--   Remaining words lemmatized, furthering reducing vocabulary by roughly 10%
+    -   Words removed (7.3% in French, 6.6% in Spanish)
+
+    -   Remaining words lemmatized, furthering reducing vocabulary by roughly 10%
 
 ## Word Embeddings: Methods
 
@@ -308,53 +247,75 @@ format:
 -   French *être* : Latin *esse*
 :::
 
-
 ![](centroid.png){fig-align="center" width="175"}
 
 ::: {style="font-size: 0.75em;"}
 1b. If there isn't a 1:1 correspondence, identify the centroid of lemma's vector: **language-word center**
 
 -   French *frêle*, *fragile* : Latin *fragilis*
-
 :::
 
 2.  Identify the centroid of both **lwc**s -\> **inter-language-word center**
 
-
 ## Word Embeddings: Calculating \*Latin
 
 ::: {style="font-size: 0.9em;"}
--   With a better model/better translations, this is all we'd need. 
+-   With a better model/better translations, this is all we'd need.
 -   Two extra steps were added by Anton to take into account translation errors and unexpected outliers.
 
 3.  We identify the closest vectors to the **ilwc** using cosine-distance.
-
 
 ![](formula.png){fig-align="center"}
 
 4.  Take the average of these two vectors to arrive at the approximate \*Latin word vector
 :::
 
-## Word Embeddings: Results
+## Word Embeddings: the "Normal" Model
 
 -   To identify the effectiveness of the method, recall that we want to compare the \*Latin with the Latin
 -   This is our "normal" model
 
 ![](comp_meth_romance.png){fig-align="center"}
 
-## Word Embeddings: Analogy vs. OddOneOut
+## Word Embeddings: How to Assess the Goodness of Your Model
 
 -   The analogy task ([Mikolov et al. 2013](https://arxiv.org/pdf/1301.3781 "Efficient Estimation of Word Representations in Vector Space")) is considered standard when evaluating word embedding models: *London is to England as Paris is France*
 -   But it doesn't work for languages with small corpora (LRLs), *especially* ones that aren't modern
+
+## Word Embeddings: OddOneOut (Stringham & Izbicki 2020)
+
 -   We follow [Stringham & Izbicki 2020](https://aclanthology.org/2020.eval4nlp-1.17.pdf "Evaluating Word Embeddings on Low-Resource Languages") in using the OddOneOut task, which has been demonstrated to be more accurate in these situations
 -   OddOneOut task demonstrated to work for corpora as small as 1800 tokens (Old Gujarati)
+
+## Word Embeddings: OddOneOut (Stringham & Izbicki 2020)
+
+-   The OddOneOut technique "measures a model's ability to identify words that are unrelated to \[a specific\] category"
+
+![](bert_pigeon.jpg){fig-align="center"}
+
+::: {style="display: flex; justify-content: center;"}
+<i>One of these things is not like the other!</i>
+:::
+
+## Word Embeddings: OddOneOut (Stringham & Izbicki 2020)
+
+-   Categories are automatically drawn from Wikidata and applied when it makes sense.
+-   Example categories include (ibid., 181):
+    -   **Human Biblical Figures**: *Abednego*, *Abraham*, *Azor*, *Chedorlaomer*, *Christ*, *Goliath*, *Hilkiah*, *Lo-Ammi*, *Matthew the Apostle*, *Peter*, *Sheba*, *Uz*, *Yael*, *Zerubbabel*
+    -   **Hinduism**: *Adharma*, *Ashvadamedha*, *Brahmin*, *Bhagavan*, *Guru*, *Hindu Prayer Beads*, *Karma*, *Mahātmā*, *Mudra*, *Nirvana*
 
 ## Word Embeddings: Results
 
 -   Our results indicate mixed success: we can create a hyperspace from the descendant languages that performs reasonably well on Latin tests with OddOneOut
 -   Preliminary tests show that the smaller the corpus, the better the model works, as compared to the normal one
+
+[![](heatmap.png){fig-align="center" width="392"}](https://github.com/Winjapati/weciec_2024/tree/main/WeCIEC_talk_files)
+
+## Word Embeddings: Results
+
 -   This is not exactly a bad thing, as this is the case for many languages in our discipline!
     -   If a language has a large corpus (such as Ancient Greek), we can reduce it as we've done here for Latin
+    -   To train such models, reductions of tokens are done randomly, both with regards to the number of tokens and specific tokens used
 
 ## Word Embeddings: Results
 
@@ -362,9 +323,23 @@ format:
 
 -   Unclear what is the "magic number" for the size of corpus to arrive at most accurate representation (compared to the normal model)
 -   Unclear exactly why performance of descendant models tends to decrease as the corpus size increases
-    -   Anton has ideas, all quite technical -- see the draft for further
+    -   Anton has ideas, all model-/programming-specific -- see the draft for further
 
-## Word Embeddings: Problems with Current Model
+# Future Directions & DERBi PIE
+
+## Recap: Descendant Model
+
+<br>
+
+-   Implementing methodology from Historical Linguistics, the Comparative Method, in the reconstruction of earlier hyperspaces
+-   Upsides:
+    1.  fully automated
+    2.  requires low CPU processing
+-   Downsides:
+    1.  doesn't distinguish multiple senses (polysemy)
+    2.  only performs well (relatively) on smaller corpora
+
+## Word Embeddings: Problems with Current Model (Anonymous NLP reviewers)
 
 1.  Use of Google translate suboptimal, may result in translation errors; should use either bilingual dictionaries or LLMs (think GPT) for more accurate translations
 2.  LLMs \> Word Embeddings
@@ -372,43 +347,11 @@ format:
     b.  Vectors: context
     c.  Vectors: precision (300 vs. 175B parameters)
 
-# Recap & Future Directions {#recap-future-directions}
-
-## Recap: WordNet
-
-1.  Upsides: semi-universal structure
-2.  Downsides:
-    -   must be done manually; requires scholars to make choices that are sometimes unknowable;
-    -   isn't capable of showing certain types of semantic similarities/differences beyond synonymy, hyponymy, etc.
-
-![](PIE_wordnet.png){fig-align="center"}
-
-## Recap: Word Embeddings
-
-<br>
-
-1.  Upsides: fully automated, requires low CPU processing
-2.  Downsides: doesn't distinguish multiple senses (polysemy), is less accurate than LLMs
-
-## Future Directions: WordNet Embedding?
-
--   [Johannson and Pietro Nina 2015](https://aclanthology.org/N15-1164.pdf "Embedding a Semantic Network in a Word Space"): build hyperspaces from systems like WordNet
-
-    -   We should be able to do this for many IE languages (mostly modern)
-
-    -   For languages without WordNets (like PIE), we "translate" the lexicon (\< DERBi PIE) into a WordNet structure
-
-## Future Directions: WordNet Embedding?
-
--   Eliminate any matchings that are untrue (like *\*i̯eh₂-* "drive" = "hit a golfball")
-
-    -   Manually assign outliers as hyponyms, hypernyms, synonyms, etc. of existing lexemes
-
--   But same problems from before remain - less precise, must be done manually
-
 ## Future Directions: using LLM models
 
--   Probably the best course of action is to stick with the Descendant Model strategy, but:
+-   We believe that our reconstruction model shows promise
+
+-   We plan to stick with the Descendant Model strategy, but:
 
     -   Utilize LLMs (such as GPT) for modelling (hyperspace) for greater precision and differentiation of polysemy
 
@@ -422,7 +365,14 @@ format:
 
 -   When happy with results, move on to other subbranches (likely Slavic or Indic) for testing;
 
--   We believe that a good, workable model should be able to generate a *Proto-vector through the centroid of the language-word centers (minus those additional steps).
+-   We believe that a good, workable model should be able to generate a \*Proto-vector through the centroid of the language-word centers (minus those additional steps).
+
+## Future Directions: Integration into DERBi PIE
+
+-   Earlier, we talked about what led us to this topic -- DERBi PIE
+
+-   With hyperspaces generated for each descendant and reconstructed language, our models would give us numerical scores
+
 
 ## Thank you!
 
