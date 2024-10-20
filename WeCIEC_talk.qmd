@@ -7,7 +7,7 @@ date: "Friday, October 25, 2024"
 format:
   revealjs:
     self-contained: true
-    incremental: false
+    incremental: true
     extensions:
       - qrcode
     header-includes:
@@ -194,7 +194,7 @@ format:
 
 <br>
 
--   So we take pre-aligned hyperspaces, and reconstruct an earlier, source hyperspace based on the hyperspaces provided
+-   So we take descendant hyperspaces, and reconstruct an earlier, source hyperspace based on the hyperspaces provided
 -   But how can we trust this methodology?
     -   Obviously can't verify the hyperspace of PIE through analysis of PIE texts!
 
@@ -299,7 +299,7 @@ format:
 
 ## Word Embeddings: OddOneOut (Stringham & Izbicki 2020)
 
--   Categories are automatically drawn from Wikidata and applied when it makes sense.
+-   Categories are automatically drawn from Wikidata and implemented when applicable.
 -   Example categories include (ibid., 181):
     -   **Human Biblical Figures**: *Abednego*, *Abraham*, *Azor*, *Chedorlaomer*, *Christ*, *Goliath*, *Hilkiah*, *Lo-Ammi*, *Matthew the Apostle*, *Peter*, *Sheba*, *Uz*, *Yael*, *Zerubbabel*
     -   **Hinduism**: *Adharma*, *Ashvadamedha*, *Brahmin*, *Bhagavan*, *Guru*, *Hindu Prayer Beads*, *Karma*, *Mahātmā*, *Mudra*, *Nirvana*
@@ -331,13 +331,13 @@ format:
 
 <br>
 
--   Implementing methodology from Historical Linguistics, the Comparative Method, in the reconstruction of earlier hyperspaces
+-   In this talk, we implement the Comparative Method to reconstruct the hyperspaces of languages without corpora
 -   Upsides:
     1.  fully automated
     2.  requires low CPU processing
 -   Downsides:
     1.  doesn't distinguish multiple senses (polysemy)
-    2.  only performs well (relatively) on smaller corpora
+    2.  only performs well on smaller corpora (compared to normal model)
 
 ## Word Embeddings: Problems with Current Model (Anonymous NLP reviewers)
 
@@ -369,10 +369,26 @@ format:
 
 ## Future Directions: Integration into DERBi PIE
 
--   Earlier, we talked about what led us to this topic -- DERBi PIE
+-   Let's finish with where we began -- DERBi PIE
 
--   With hyperspaces generated for each descendant and reconstructed language, our models would give us numerical scores
+-   With aligned hyperspaces generated for each descendant and reconstructed language, our models would give us coordinates for each lexeme in a language
 
+![](beowulf.png){fig-align="center"}
+
+
+## Future Directions: Integration into DERBi PIE
+
+-   Possible question: "How semantically similar are PIE *\*sC-* roots -- as compared to related *\*C-* roots?" (\**(s)peḱ-* 'look at')
+
+    -   Calculate cosine similarities!
+
+<!-- -->
+
+-   Example from English:
+
+    -   *bl-* words: "blue", "blaze", "bland", "blush", "blink", "blow", "blast", "blot", "blend", "bleak"
+
+    -   These words have a cosine similarity score of .8016 (remember: perfect score is 1.0!)
 
 ## Thank you!
 
