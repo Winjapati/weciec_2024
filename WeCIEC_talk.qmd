@@ -96,54 +96,65 @@ format:
 
 ## Word Embeddings: Overview
 
--   Second approach is one more in line with what is done in present-day NLP – identifying semantic relationships through word embeddings.
+-   Distributional Analysis: “You shall know a word by the company it keeps.” - John Rupert Firth
 
--   To do so, we must:
+-   For example, you are very likely to see the words "dog" and "leash" appear near each other in a text.
 
-    -   Process a corpus for tokens and then lemmas;
+-   However, you are less likely to see the words "dog" and "physics" as near each other.
 
-    -   Analyze the environments in which these lemmas occur;
+    -   Why is that?
 
-    -   Take this information to construct a semantic "hyperspace"
+## Word Embeddings: Overview
 
-## Word Embeddings: Hyperspace
+-   There exist programming tools that allow us to generate *vectors* (essentially coordinates) based on a word's position within a text and proximity to other words.
 
-![Plots like these can be created with generated vectors!](beowulf.png){fig-align="center"}
+-   All of the vectors that can be generated from a text would lie in a *semantic space* or *hyperspace*.
 
-## Word Embeddings: Hyperspace...?
+## Word Embeddings: Overview
 
--   If you were to plot out every vector generated from one of these models, you would have a *hyperspace* or a *semantic space*, with the dimensions of each word vector essentially acting as coordinates.
+-   This approach in line with what is done in present-day NLP – identifying semantic relationships through word embeddings.
 
--   The closer two words lie to each other in this space, the closer in semantic value they are.
-
--   It's possible to adjust how many dimensions you generate for each vector, but in general the more the better.
-
-    -   More fancy math allows us to 'simplify' these vectors into 2 or 3 for easy viewing, as seen before.
+-   Before we can run a text through one of these tools, we must first discuss tokenization and lemmatization.
 
 ## Word Embeddings: Processing the Text for Tokens
+
+-   Tokenization is the process of breaking a text into chunks.
 
 ![](Gallia%20est%20omnis%20divisa%20in%20partes%20tres%20(1).png){fig-align="center"}
 
 ## Word Embeddings: Processing the Text for Lemmas
 
+-   Lemmatization is the process of reducing multiple forms to a single one.
+
 ![](lemmas.png){fig-align="center"}
 
 ## Word Embeddings: Identifying the Context
 
+-   The word embeddings tool can analyze what words appear commonly near another word.
+
 ![](context.png){fig-align="center"}
 
-## Word Embeddings: Constructing the Hyperspace
+## Word Embeddings: Constructing a Hyperspace
 
--   Using a word embeddings model such as word2vec or fastText, run the tokenized and lemmatized text through it to generate word vectors.
--   These vectors will be based on the words' positions within the text.
+-   You can tinker with how exactly a word embeddings tool generates these vectors, for example:
 
-## Word Embeddings: Constructing the Hyperspace
+    -   How many dimensions will it generate for each vector?
+
+    -   How far to each side of a word will it look?
+
+    -   How many times will it run through the text?
+
+## Word Embeddings: Example of a Hyperspace
+
+![Plots like these can be created with generated vectors!](beowulf.png){fig-align="center"}
+
+## Word Embeddings: Example of a Vector
 
 -   Another Latin example:
 
 ![](vir_vectors.png){fig-align="center" width="438"}
 
-## Word Embeddings: Calculate Word Similarities
+## Word Embeddings: Numerical Value of Semantic Similarity
 
 -   To get a numerical representation of the similarity between two vectors, we use their *cosine similarity* (cosine of the angle between the vectors).
 -   Similarity scores range from -1 to 1, with -1 indicating opposite vectors and 1 indicating proportional vectors.
@@ -151,6 +162,8 @@ format:
 ![Fancy formula from Wikipedia](formula.png){fig-align="center"}
 
 ## Word Embeddings: Example of Cosine Similarity
+
+-   This score suggests that these two words are more similar than not.
 
 ![](cosine.png){fig-align="center"}
 
@@ -374,7 +387,6 @@ format:
 -   With aligned hyperspaces generated for each descendant and reconstructed language, our models would give us coordinates for each lexeme in a language
 
 ![](beowulf.png){fig-align="center"}
-
 
 ## Future Directions: Integration into DERBi PIE
 
