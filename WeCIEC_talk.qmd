@@ -84,7 +84,7 @@ format:
 
     -   How have meanings changed over time into the various branches and daughter languages?
 
-## DERBi PIE: the Problem
+## DERBi PIE: the Problem for Today
 
 <br> <br> <br>
 
@@ -201,7 +201,6 @@ format:
 
 -   As you can imagine, this stuff is complicated, which is why we won't go into much detail about the specific methods;
     -   see Github for four-page paper, code, data, etc.
--   If there are any questions that we can't answer, we'll forward them to Anton, who will be happy to do so
 
 ## Word Embeddings, Problem #1: Verification
 
@@ -225,23 +224,12 @@ format:
 
 ## Word Embeddings: Methods
 
--   Using existing aligned models of Spanish & French ([Joulin et al., 2018](https://arxiv.org/pdf/1804.07745 "Loss in Translation: Learning Bilingual Word Mapping with a Retrieval Criterion")) as a source of vector and word information:
-    -   We take aligned word vectors from Facebook AI Research's fastText ([Bojanowski et al., 2017](https://arxiv.org/pdf/1607.04606 "Enriching Word Vectors with Subword Information"))
--   Words filtered out:
+-   Models trained on French & Spanish Wikipedia articles
+-   Generate aligned word vectors using fastText ([Bojanowski et al., 2017](https://arxiv.org/pdf/1607.04606 "Enriching Word Vectors with Subword Information"))
+-   Filter out certain words:
     -   If there is no corresponding word in the other languages
     -   Non-vocabulary, including words with non-language characters
-
-## Word Embeddings: Methods
-
-<br>
-
-![](la_wikipedia.png){fig-align="center"}
-
--   Models trained on French & Spanish Wikipedia articles
-
-    -   Words removed (7.3% in French, 6.6% in Spanish)
-
-    -   Remaining words lemmatized, furthering reducing vocabulary by roughly 10%
+-   Remaining words lemmatized, further reducing vocabulary by roughly 10%
 
 ## Word Embeddings: Methods
 
@@ -255,20 +243,16 @@ format:
 ## Word Embeddings: Calculating \*Latin
 
 ::: {style="font-size: 0.75em;"}
-1a. If there's a 1:1 correspondence between the Romance language & Latin: **language-word center**
-
--   French *être* : Latin *esse*
+1.  If there's a 1:1 correspondence between the Romance language & Latin: **language-word center**: French *être* : Latin *esse*
 :::
 
-![](centroid.png){fig-align="center" width="175"}
+![](centroid.png){fig-align="center" width="200"}
 
 ::: {style="font-size: 0.75em;"}
-1b. If there isn't a 1:1 correspondence, identify the centroid of lemma's vector: **language-word center**
+2.  If there isn't a 1:1 correspondence, identify the *centroid* of lemma's vector: **language-word center**: French *frêle*, *fragile* : Latin *fragilis*
 
--   French *frêle*, *fragile* : Latin *fragilis*
+3.  Identify the centroid of both **lwc**s -\> **inter-language-word center**
 :::
-
-2.  Identify the centroid of both **lwc**s -\> **inter-language-word center**
 
 ## Word Embeddings: Calculating \*Latin
 
@@ -276,29 +260,30 @@ format:
 -   With a better model/better translations, this is all we'd need.
 -   Two extra steps were added by Anton to take into account translation errors and unexpected outliers.
 
-3.  We identify the closest vectors to the **ilwc** using cosine-distance.
+4.  We identify the closest vectors to the **ilwc** using cosine-distance.
 
 ![](formula.png){fig-align="center"}
 
-4.  Take the average of these two vectors to arrive at the approximate \*Latin word vector
+5.  Take the average of these two vectors to arrive at the approximate \*Latin word vector
 :::
 
 ## Word Embeddings: the "Normal" Model
 
--   To identify the effectiveness of the method, recall that we want to compare the \*Latin with the Latin
--   This is our "normal" model
-
 ![](comp_meth_romance.png){fig-align="center"}
+
+-   To identify the effectiveness of the method, recall that we want to compare the \*Latin with the Latin
+-   But how do we know how well each model performs?
+
+<!-- ## Word Embeddings:  -->
+
+<!-- -   The analogy task ([Mikolov et al. 2013](https://arxiv.org/pdf/1301.3781 "Efficient Estimation of Word Representations in Vector Space")) is considered standard when evaluating word embedding models: *London is to England as Paris is France* -->
+
+<!-- -   But it doesn't work for languages with small corpora (LRLs), *especially* ones that aren't modern -->
 
 ## Word Embeddings: How to Assess the Goodness of Your Model
 
--   The analogy task ([Mikolov et al. 2013](https://arxiv.org/pdf/1301.3781 "Efficient Estimation of Word Representations in Vector Space")) is considered standard when evaluating word embedding models: *London is to England as Paris is France*
--   But it doesn't work for languages with small corpora (LRLs), *especially* ones that aren't modern
-
-## Word Embeddings: OddOneOut (Stringham & Izbicki 2020)
-
--   We follow [Stringham & Izbicki 2020](https://aclanthology.org/2020.eval4nlp-1.17.pdf "Evaluating Word Embeddings on Low-Resource Languages") in using the OddOneOut task, which has been demonstrated to be more accurate in these situations
--   OddOneOut task demonstrated to work for corpora as small as 1800 tokens (Old Gujarati)
+-   We follow [Stringham & Izbicki 2020](https://aclanthology.org/2020.eval4nlp-1.17.pdf "Evaluating Word Embeddings on Low-Resource Languages") in using the OddOneOut task, which has been demonstrated to be more accurate with languages with small corpora (LRLs), *especially* ones that aren't modern
+-   OddOneOut task demonstrated to work for languages with corpus as small as 1800 tokens (Old Gujarati)
 
 ## Word Embeddings: OddOneOut (Stringham & Izbicki 2020)
 
@@ -378,7 +363,7 @@ format:
 
 -   When happy with results, move on to other subbranches (likely Slavic or Indic) for testing;
 
--   We believe that a good, workable model should be able to generate a \*Proto-vector through the centroid of the language-word centers (minus those additional steps).
+-   We believe that a good, workable model should be able to generate a \*proto-vector through the **centroid of the descendant language-word centers** (minus those additional steps).
 
 ## Future Directions: Integration into DERBi PIE
 
