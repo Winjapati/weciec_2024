@@ -11,7 +11,7 @@ format:
     extensions:
       - qrcode
     header-includes:
-      - '<img src="Horsey.jpg" style="position: absolute; top: 10px; right: 10px; width: 100px; height: auto;">'
+      - '<img src="DERBiPIE_disk_logo.png" style="position: absolute; top: 10px; right: 10px; width: 100px; height: auto;">'
 ---
 
 ## Overview of Talk
@@ -37,7 +37,7 @@ format:
 
 ## DERBi PIE
 
-![](Horsey.jpg){fig-align="center"}
+![](DERBiPIE_logo_full.png){fig-align="center"}
 
 ::: {style="display: flex; justify-content: center;"}
 <i>*Database of Etymological Roots Beginning in PIE*</i>
